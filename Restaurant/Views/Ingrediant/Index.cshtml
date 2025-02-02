@@ -1,0 +1,32 @@
+﻿@model List<Ingrediant>
+
+
+@{
+    ViewBag.Title = "List of Restaurant Ingredients";
+}
+<a asp-action="create"> create new ingrediant  </a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @typeof(Ingrediant).Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Ingrediant i in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i.Name)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@i.IngrediantId">Details</a>
+                    <a asp-action="Edit" asp-route-id="@i.IngrediantId">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@i.IngrediantId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
